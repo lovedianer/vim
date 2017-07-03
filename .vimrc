@@ -259,8 +259,25 @@ set ignorecase					"搜索模式里忽略大小写
 set smartcase                             	"如果搜索模式包含大写字符，不使用 'ignorecase' 选项，只有在输入搜索模式并且打开 'ignorecase' 选项时才会使用
 set cursorline					"突出显示当前行
 "set cmdheight=2                         	"设置命令行的高度为2，默认为1
+
 set laststatus=2				"启用状态栏信息
+" 显示当前正在编辑的文件名所在的绝对路径以及必要的冗余信息 ++
+" 1.非实时显示即正常模式下可执行命令： :f 或 CTRL+G
+" 2.实时显示,增加如下代码：
+" 获取当前路径，将$HOME转化为~
+"function! CurDir()  
+	"let curdir = substitute(getcwd(), $HOME, "~", "g")
+	"return curdir
+"endfunction
+"set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|%=\|\ %l,%c\ %p%%\ \|\ ascii=%b,hex=%b%{((&fenc==\"\")?\"\":\"\ \|\ \".&fenc)}\ \|\ %{$USER}\ @\ %{hostname()}\  
+" 或以下两句
+"set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%] "[缓冲区的文件完整路径][缓冲区的文件类型][如果缓冲区为只读则表示为[RO]][如果缓冲区已修改则表示为[+]][当前行数/总行数，当前列][文件中所在行的百分比]
+"set ruler					"在编辑过程中，在右下角显示光标位置的状态行
+" 显示当前正在编辑的文件名所在的绝对路径以及必要的冗余信息 --
+
+set statusline=[%n][%f]%r%m%*%=[Line:%l/%L,Column:%c][%p%%]	"[缓冲区号][缓冲区的文件路径][当前行数/总行数，当前列][文件中所在行的百分比]
 set ruler					"Always show current position
+
 set autoread					"Set to auto read when a file is changed from the outside
 "set mouse=a					"Have the mouse enabled all the time
 
