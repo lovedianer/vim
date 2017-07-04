@@ -347,9 +347,9 @@ endif
 "  < Code fold >
 " -----------------------------------------------------------------------------
 "set foldenable                                	"启用折叠
-"set foldmethod=indent                        	"indent 折叠方式
+set foldmethod=indent                        	"indent 折叠方式
 "set foldmethod=marker                     	"marker 折叠方式
-set foldmethod=syntax
+"set foldmethod=syntax
 set foldlevel=100       			" Don't autofold anything (but I can still fold manually)
 "set foldopen-=search   			" don't open folds when you search into them
 "set foldopen-=undo     			" don't open folds when you undo stuff
