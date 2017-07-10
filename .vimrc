@@ -916,12 +916,15 @@ nmap tl :TagbarClose<CR>:Tlist<CR>
 
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Show_One_File=1                   	"只显示当前文件的tags
-" let Tlist_Enable_Fold_Column=0    		"使taglist插件不显示左边的折叠行
+let Tlist_Auto_Update=1							"Automatically update the taglist to include newly edited files.
+let Tlist_File_Fold_Auto_Close=1				"非当前文件，函数列表折叠隐藏
+"let Tlist_Enable_Fold_Column=0					"使taglist插件不显示左边的折叠行
 let Tlist_Exit_OnlyWindow=1                 	"如果Taglist窗口是最后一个窗口则退出Vim
 "let Tlist_File_Fold_Auto_Close=1            	"自动折叠
-let Tlist_Show_Menu=1
+let Tlist_Show_Menu=1							"显示taglist菜单
+"let Tlist_Auto_Open=1							"启动vim自动打开taglist
 "let Tlist_WinWidth=30                       	"设置窗口宽度
-"let Tlist_Use_Right_Window=1                	"在右侧窗口中显示
+"let Tlist_Use_Right_Window=1                	"把taglist窗口放在屏幕的右侧，缺省在左侧
 
 " -----------------------------------------------------------------------------
 "  < winmanager setting >
