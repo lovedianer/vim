@@ -749,6 +749,16 @@ endfunction
 " -----------------------------------------------------------------------------
 " 一个全路径模糊文件，缓冲区，最近最多使用，... 检索插件；详细帮助见 :h ctrlp
 " 常规模式下输入：Ctrl + p 调用插件
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'rw'
+let g:ctrlp_root_markers = ['tags', 'cscope.out']
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+	\ 'link': 'some_bad_symbolic_links',
+	\ }
 
 " -----------------------------------------------------------------------------
 "  < emmet-vim（前身为Zen coding） 插件配置 >
