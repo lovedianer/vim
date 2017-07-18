@@ -843,13 +843,14 @@ let g:neocomplcache_enable_at_startup = 1     "vim 启动时启用插件
 "  < nerdtree 插件配置 >
 " -----------------------------------------------------------------------------
 " 有目录村结构的文件浏览插件
-
-" 常规模式下输入 F2 调用插件
-nmap <F2> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
+nmap <leader>nt :NERDTreeFind<CR>
 " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
 let NERDTreeWinPos="right"
 " 当打开 NERDTree 窗口时，自动显示 Bookmarks
 let NERDTreeShowBookmarks=1
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
 
 " -----------------------------------------------------------------------------
 "  < omnicppcomplete 插件配置 >
@@ -908,9 +909,8 @@ let c_cpp_comments = 0
 "  < Tagbar 插件配置 >
 " -----------------------------------------------------------------------------
 " 相对 TagList 能更好的支持面向对象
-
-" 常规模式下输入 tb 调用插件，如果有打开 TagList 窗口则先将其关闭
-nmap tb :TlistClose<CR>:TagbarToggle<CR>
+" 常规模式下输入 \tb 调用插件，如果有打开 TagList 窗口则先将其关闭
+nmap <leader>tb :TlistClose<CR>:TagbarToggle<CR>
 
 let g:tagbar_width=30                       	"设置窗口宽度
 let g:tagbar_left=1                         	"在左侧窗口中显示
@@ -920,9 +920,8 @@ let g:tagbar_left=1                         	"在左侧窗口中显示
 " -----------------------------------------------------------------------------
 " 高效地浏览源码, 其功能就像vc中的workpace
 " 那里面列出了当前文件中的所有宏,全局变量, 函数名等
-
-" 常规模式下输入 tl 调用插件，如果有打开 Tagbar 窗口则先将其关闭
-nmap tl :TagbarClose<CR>:Tlist<CR>
+" 常规模式下输入 \tl 调用插件，如果有打开 Tagbar 窗口则先将其关闭
+nmap <leader>tl :TagbarClose<CR>:Tlist<CR>
 
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Show_One_File=1                   	"只显示当前文件的tags
