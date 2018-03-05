@@ -261,7 +261,7 @@
         " Python {
             if count(g:dup_vundle_groups, 'python')
                 " Pick either python-mode or pyflakes & pydoc
-                Plugin 'klen/python-mode'
+                "Plugin 'klen/python-mode'  " cause INSERT MODE:cursor error
                 Plugin 'yssource/python.vim'
                 Plugin 'python_match.vim'
                 Plugin 'pythoncomplete'
