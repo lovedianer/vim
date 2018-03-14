@@ -347,16 +347,12 @@
         language messages zh_CN.utf-8
     endif
 
-    filetype on                     " 启用文件类型侦测
-    filetype plugin on              " 针对不同的文件类型加载对应的插件
     filetype plugin indent on       " Automatically detect file types.
-    syntax enable
     syntax on                       " Syntax highlighting
     "set mouse=a                    " Automatically enable mouse usage
     set mousehide                   " Hide the mouse cursor while typing
     scriptencoding utf-8
 
-    set smartindent                 " 启用智能对齐方式
     "set expandtab                  " 将Tab键转换为空格
     set smarttab                    " 指定按一次backspace就删除shiftwidth宽度
     set textwidth=80
@@ -485,7 +481,7 @@
 
 " Formatting {
 
-    "set nowrap                      " Do not wrap long lines
+    set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
     set expandtab                   " Tabs are spaces, not tabs
@@ -776,7 +772,7 @@
 
 " Functions {
 
-    " Strip whitespace {}
+    " Strip whitespace {
     function! StripTrailingWhitespace()
         " Preparation: save last search, and cursor position.
         let _s=@/
