@@ -193,7 +193,6 @@
                 Plugin 'kana/vim-textobj-indent'
                 Plugin 'bufexplorer.zip'
                 Plugin 'minibufexpl.vim'
-                Plugin 'winmanager'
             endif
         " }
 
@@ -691,17 +690,6 @@
             noremap <c-l> <c-w>l
             " 快捷键 mb 打开或关闭 MiniBufExplorer
             nmap mb :TMiniBufExplorer<CR>
-        endif
-    " }
-
-    " winmanager {
-        if isdirectory(expand("~/.vim/bundle/winmanager/"))
-            "let g:winManagerWindowLayout='BufExplorer,FileExplorer|Taglist'
-            "let g:winManagerWindowLayout='BufExplorer,Taglist|FileExplorer'
-            "let g:winManagerWidth = 30
-            "let g:defaultExplorer = 0
-            "let g:netrw_winsize = 30
-            "nmap wm :WMToggle<CR>
         endif
     " }
 
