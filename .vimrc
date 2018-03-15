@@ -252,7 +252,7 @@
 
         " PHP {
             if count(g:dup_vundle_groups, 'php')
-            	Plugin 'spf13/PIV'
+                Plugin 'spf13/PIV'
                 Plugin 'arnaud-lb/vim-php-namespace'
                 Plugin 'beyondwords/vim-twig'
             endif
@@ -1091,8 +1091,8 @@
     " }
 
     " Normal Vim omni-completion {
-    		" To disable omni complete, add the following:
-    		" let g:dup_no_omni_complete = 1
+    	" To disable omni complete, add the following:
+    	" let g:dup_no_omni_complete = 1
         elseif !exists('g:dup_no_omni_complete')
             " Enable omni-completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
