@@ -533,8 +533,8 @@
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
-    " To disable the stripping of whitespace
-    "let g:dup_keep_trailing_whitespace = 1
+    " To disable the stripping of whitespace, add the following:
+    let g:dup_keep_trailing_whitespace = 1
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:dup_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     "autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
