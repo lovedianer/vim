@@ -1167,10 +1167,17 @@
             let g:indent_guides_guide_size = 1
 
             " Setting custom indent colors
-            " when set background=dark
-            hi IndentGuidesOdd  ctermbg=black
-            hi IndentGuidesEven ctermbg=darkgrey
-            " when set background=light
+            " Here's an example of how to define custom colors instead of
+            " using the ones the plugin automatically generates for you.
+            let g:indent_guides_auto_colors = 0
+            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+            " Terminal Vim
+            " When set background=dark is used, the following highlight colors will be defined:
+            "hi IndentGuidesOdd  ctermbg=black
+            "hi IndentGuidesEven ctermbg=darkgrey
+            " Alternatively, when set background=light is used, the following highlight colors will be defined:
             "hi IndentGuidesOdd  ctermbg=white
             "hi IndentGuidesEven ctermbg=lightgrey
         endif
