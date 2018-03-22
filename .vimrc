@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=80 foldmarker={,} foldlevel=0 foldmethod=marker:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
 "
 "          _                                _
 "         | |                       __   __(_)_ __ ___
@@ -369,6 +369,20 @@
 
 " General {
 
+    set background=dark             " Assume a dark background
+
+    " Allow to trigger background
+    function! ToggleBG()
+        let s:tbg = &background
+        " Inversion
+        if s:tbg == "dark"
+            set background=light
+        else
+            set background=dark
+        endif
+    endfunction
+    noremap <leader>bg :call ToggleBG()<CR>
+
     " 注：使用utf-8格式后，软件与程序源码、文件路径不能有中文，否则报错
     set encoding=utf-8                                    "设置gvim内部编码，默认不更改
     set fileencoding=utf-8                                "设置当前文件编码，可以更改，如：gbk（同cp936）
@@ -394,7 +408,7 @@
 
     "set expandtab                  " 将Tab键转换为空格
     set smarttab                    " 指定按一次backspace就删除shiftwidth宽度
-    set textwidth=80
+    set textwidth=78
 
     set autoread                    " Set to auto read when a file is changed from the outside
     "set autowrite                  " Automatically write a file when leaving a modified buffer
@@ -1147,9 +1161,18 @@
 
     " indent_guides {
         if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+            " The default mapping to toggle the plugin is <Leader>ig
+            let g:indent_guides_enable_on_vim_startup = 0
             let g:indent_guides_start_level = 2
             let g:indent_guides_guide_size = 1
-            let g:indent_guides_enable_on_vim_startup = 0
+
+            " Setting custom indent colors
+            " when set background=dark
+            hi IndentGuidesOdd  ctermbg=black
+            hi IndentGuidesEven ctermbg=darkgrey
+            " when set background=light
+            "hi IndentGuidesOdd  ctermbg=white
+            "hi IndentGuidesEven ctermbg=lightgrey
         endif
     " }
 
