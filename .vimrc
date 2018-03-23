@@ -757,7 +757,8 @@
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
         " 有目录村结构的文件浏览插件
-        map <C-n> :NERDTreeToggle<CR>
+        "map <C-n> :NERDTreeToggle<CR>
+        map <C-e> :NERDTreeToggle<CR>
         nmap <leader>nt :NERDTreeFind<CR>
         " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
         let NERDTreeWinPos="right"
