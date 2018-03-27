@@ -65,76 +65,6 @@
         endif
     " }
 
-    " Windows Gvim config {
-        if (g:iswindows && g:isGUI)
-            source $VIMRUNTIME/vimrc_example.vim
-            source $VIMRUNTIME/mswin.vim
-            behave mswin
-            set diffexpr=MyDiff()
-
-            function MyDiff()
-                let opt = '-a --binary '
-                if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-                if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-                let arg1 = v:fname_in
-                if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-                let arg2 = v:fname_new
-                if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-                let arg3 = v:fname_out
-                if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-                let eq = ''
-                if $VIMRUNTIME =~ ' '
-                    if &sh =~ '\<cmd'
-                        let cmd = '""' . $VIMRUNTIME . '\diff"'
-                        let eq = '"'
-                    else
-                        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-                    endif
-                else
-                    let cmd = $VIMRUNTIME . '\diff'
-                endif
-                silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-            endfunction
-        endif
-    " }
-
-    " Linux Gvim/Vim config {
-        if g:islinux
-
-            " Uncomment the following to have Vim jump to the last position when
-            " reopening a file
-            if has("autocmd")
-                au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-            endif
-
-            if g:isGUI
-                " Source a global configuration file if available
-                if filereadable("/etc/vim/gvimrc.local")
-                    source /etc/vim/gvimrc.local
-                endif
-            else
-                " This line should not be removed as it ensures that various options are
-                " properly set to work with the Vim-related packages available in Debian.
-                " runtime! debian.vim
-
-                " Vim5 and later versions support syntax highlighting. Uncommenting the next
-                " line enables syntax highlighting by default.
-                if has("syntax")
-                    "set term=color_xterm
-                    syntax on
-                endif
-
-                set t_Co=256        " 在终端启用256色
-                set backspace=2     " 设置退格键可用
-
-                " Source a global configuration file if available
-                if filereadable("/etc/vimrc")
-                    source /etc/vimrc
-                endif
-            endif
-        endif
-    " }
-
 " }
 
 " Vundle {
@@ -1247,6 +1177,30 @@
             let g:NERDTrimTrailingWhitespace = 1
         endif
     " }
+
+" }
+
+" GUI Settings {
+
+    " GVIM- (here instead of .gvimrc)
+    if has('gui_running')
+        set guioptions-=T           " Remove the toolbar
+        set lines=40                " 40 lines of text instead of 24
+        if !exists("g:dup_no_big_font")
+            if LINUX() && has("gui_running")
+                set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
+            elseif OSX() && has("gui_running")
+                set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+            elseif WINDOWS() && has("gui_running")
+                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+            endif
+        endif
+    else
+        if &term == 'xterm' || &term == 'screen'
+            set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+        endif
+        "set term=builtin_ansi       " Make arrow and other keys work
+    endif
 
 " }
 
