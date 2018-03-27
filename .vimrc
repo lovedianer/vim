@@ -1106,8 +1106,8 @@
     " }
 
     " Normal Vim omni-completion {
-    	" To disable omni complete, add the following:
-    	" let g:dup_no_omni_complete = 1
+        " To disable omni complete, add the following:
+        " let g:dup_no_omni_complete = 1
         elseif !exists('g:dup_no_omni_complete')
             " Enable omni-completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -1234,7 +1234,7 @@
 
             " Align line-wise comment delimiters flush left instead of following code indentation
             "let g:NERDDefaultAlign = 'left'
-            
+
             " Set a language to use its alternate delimiters by default
             "let g:NERDAltDelims_java = 1
 
@@ -1243,7 +1243,7 @@
 
             " Allow commenting and inverting empty lines (useful when commenting a region)
             "let g:NERDCommentEmptyLines = 1
-            
+
             " Enable trimming of trailing whitespace when uncommenting
             let g:NERDTrimTrailingWhitespace = 1
         endif
