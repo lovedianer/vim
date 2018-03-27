@@ -499,12 +499,11 @@
 
     if has('statusline')
         set laststatus=2
-        "set statusline=[%n][%f]%r%m%*%=[Line:%l/%L,Column:%c][%p%%]	"[缓冲区号][缓冲区的文件路径][当前行数/总行数，当前列][文件中所在行的百分比]
 
         " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        "set statusline+=%{fugitive#statusline()} " Git Hotness
+        set statusline+=%{fugitive#statusline()} " Git Hotness
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
