@@ -90,21 +90,24 @@
     " My Plugins {
         " list only the plugin groups you will use
         if !exists('g:dup_vundle_groups')
-            let g:dup_vundle_groups=['general', 'writing', 'programming', 'OmniCppComplete', 'php', 'python', 'java', 'javascript', 'html', 'misc',]
+            let g:dup_vundle_groups=['general', 'writing', 'programming', 'OmniCppComplete', 'java', 'python', 'php', 'javascript', 'html', 'repo', 'misc',]
         endif
 
         " General {
             if count(g:dup_vundle_groups, 'general')
                 Plugin 'scrooloose/nerdtree'
-                Plugin 'altercation/vim-colors-solarized'
-                Plugin 'spf13/vim-colors'
+                Plugin 'ctrlpvim/ctrlp.vim'
+                Plugin 'bufexplorer.zip'
+                Plugin 'minibufexpl.vim'
+                Plugin 'vim-scripts/sessionman.vim'
+                Plugin 'terryma/vim-multiple-cursors'
                 Plugin 'tpope/vim-surround'
                 Plugin 'tpope/vim-repeat'
                 Plugin 'jiangmiao/auto-pairs'
-                Plugin 'ctrlpvim/ctrlp.vim'
-                Plugin 'terryma/vim-multiple-cursors'
-                Plugin 'vim-scripts/sessionman.vim'
                 Plugin 'matchit.zip'
+                Plugin 'easymotion/vim-easymotion'
+                Plugin 'altercation/vim-colors-solarized'
+                Plugin 'spf13/vim-colors'
                 if (has("python") || has("python3")) && exists('g:dup_use_powerline') && !exists('g:dup_use_old_powerline')
                     Plugin 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
                 elseif exists('g:dup_use_powerline') && exists('g:dup_use_old_powerline')
@@ -113,16 +116,12 @@
                     Plugin 'vim-airline/vim-airline'
                     Plugin 'vim-airline/vim-airline-themes'
                 endif
-                Plugin 'powerline/fonts'
                 Plugin 'bling/vim-bufferline'
-                Plugin 'easymotion/vim-easymotion'
+                Plugin 'powerline/fonts'
                 Plugin 'flazz/vim-colorschemes'
                 Plugin 'nathanaelkane/vim-indent-guides'
-                Plugin 'mhinz/vim-signify'
                 Plugin 'kana/vim-textobj-user'
                 Plugin 'kana/vim-textobj-indent'
-                Plugin 'bufexplorer.zip'
-                Plugin 'minibufexpl.vim'
             endif
         " }
 
@@ -139,7 +138,6 @@
             if count(g:dup_vundle_groups, 'programming')
                 " Pick one of the checksyntax, jslint, or syntastic
                 "Plugin 'scrooloose/syntastic'
-                Plugin 'tpope/vim-fugitive'
                 Plugin 'mattn/webapi-vim'
                 Plugin 'mattn/gist-vim'
                 Plugin 'scrooloose/nerdcommenter'
@@ -180,11 +178,9 @@
             endif
         " }
 
-        " PHP {
-            if count(g:dup_vundle_groups, 'php')
-                Plugin 'spf13/PIV'
-                Plugin 'arnaud-lb/vim-php-namespace'
-                Plugin 'beyondwords/vim-twig'
+        " Java {
+            if count(g:dup_vundle_groups, 'java')
+                Plugin 'artur-shaik/vim-javacomplete2'  "needs vim version>=7.4.143 & JDK8+
             endif
         " }
 
@@ -198,9 +194,17 @@
             endif
         " }
 
-        " Java {
-            if count(g:dup_vundle_groups, 'java')
-                Plugin 'artur-shaik/vim-javacomplete2'  "needs vim version>=7.4.143 & JDK8+
+        " Go Lang {
+            if count(g:dup_vundle_groups, 'go')
+                Plugin 'fatih/vim-go'
+            endif
+        " }
+
+        " PHP {
+            if count(g:dup_vundle_groups, 'php')
+                Plugin 'spf13/PIV'
+                Plugin 'arnaud-lb/vim-php-namespace'
+                Plugin 'beyondwords/vim-twig'
             endif
         " }
 
@@ -211,6 +215,16 @@
                 Plugin 'pangloss/vim-javascript'
                 Plugin 'briancollins/vim-jst'
                 Plugin 'kchmck/vim-coffee-script'
+            endif
+        " }
+
+        " HTML {
+            if count(g:dup_vundle_groups, 'html')
+                "Plugin 'amirh/HTML-AutoCloseTag'   " Download fail
+                Plugin 'hail2u/vim-css3-syntax'
+                Plugin 'gorodinskiy/vim-coloresque'
+                Plugin 'tpope/vim-haml'
+                Plugin 'mattn/emmet-vim'
             endif
         " }
 
@@ -237,16 +251,6 @@
             endif
         " }
 
-        " HTML {
-            if count(g:dup_vundle_groups, 'html')
-                "Plugin 'amirh/HTML-AutoCloseTag'   " Download fail
-                Plugin 'hail2u/vim-css3-syntax'
-                Plugin 'gorodinskiy/vim-coloresque'
-                Plugin 'tpope/vim-haml'
-                Plugin 'mattn/emmet-vim'
-            endif
-        " }
-
         " Ruby {
             if count(g:dup_vundle_groups, 'ruby')
                 Plugin 'tpope/vim-rails'
@@ -256,10 +260,11 @@
             endif
         " }
 
-        " Go Lang {
-            if count(g:dup_vundle_groups, 'go')
-                "Plugin 'Blackrush/vim-gocode'
-                Plugin 'fatih/vim-go'
+        " Repo {
+            if count(g:dup_vundle_groups, 'repo')
+                Plugin 'vcscommand.vim'
+                Plugin 'tpope/vim-fugitive'
+                Plugin 'mhinz/vim-signify'
             endif
         " }
 
@@ -272,7 +277,6 @@
                 Plugin 'cespare/vim-toml'
                 Plugin 'quentindecock/vim-cucumber-align-pipes'
                 Plugin 'saltstack/salt-vim'
-                Plugin 'vcscommand.vim'
             endif
         " }
 
@@ -523,29 +527,7 @@
 
 " }
 
-" Plugins {
-
-    " GoLang {
-        if count(g:dup_vundle_groups, 'go')
-            let g:go_highlight_functions = 1
-            let g:go_highlight_methods = 1
-            let g:go_highlight_structs = 1
-            let g:go_highlight_operators = 1
-            let g:go_highlight_build_constraints = 1
-            let g:go_fmt_command = "goimports"
-            let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-            let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-            au FileType go nmap <Leader>s <Plug>(go-implements)
-            au FileType go nmap <Leader>i <Plug>(go-info)
-            au FileType go nmap <Leader>e <Plug>(go-rename)
-            au FileType go nmap <leader>r <Plug>(go-run)
-            au FileType go nmap <leader>b <Plug>(go-build)
-            au FileType go nmap <leader>t <Plug>(go-test)
-            au FileType go nmap <Leader>gd <Plug>(go-doc)
-            au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-            au FileType go nmap <leader>co <Plug>(go-coverage)
-        endif
-    " }
+" Plugins Settings {
 
     " TextObj Sentence {
         if count(g:dup_vundle_groups, 'writing')
@@ -566,50 +548,6 @@
                 autocmd FileType textile call textobj#quote#init()
                 autocmd FileType text call textobj#quote#init({'educate': 0})
             augroup END
-        endif
-    " }
-
-    " PIV {
-        if isdirectory(expand("~/.vim/bundle/PIV"))
-            let g:DisableAutoPHPFolding = 0
-            let g:PIVAutoClose = 0
-        endif
-    " }
-
-    " Misc {
-        if isdirectory(expand("~/.vim/bundle/matchit.zip"))
-            let b:match_ignorecase = 1
-        endif
-    " }
-
-    " OmniComplete {
-        " To disable omni complete, add the following:
-        " let g:dup_no_omni_complete = 1
-        if !exists('g:dup_no_omni_complete')
-            if has("autocmd") && exists("+omnifunc")
-                autocmd Filetype *
-                    \if &omnifunc == "" |
-                    \setlocal omnifunc=syntaxcomplete#Complete |
-                    \endif
-            endif
-
-            hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-            hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-            hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
-
-            " Some convenient mappings
-            "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-            if exists('g:dup_map_cr_omni_complete')
-                inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
-            endif
-            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-            inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-            inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
-
-            " Automatically open and close the popup menu / preview window
-            au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-            set completeopt=menu,preview,longest
         endif
     " }
 
@@ -761,22 +699,83 @@
         endif
     " }
 
-    " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
-            nnoremap <silent> <leader>gs :Gstatus<CR>
-            nnoremap <silent> <leader>gd :Gdiff<CR>
-            nnoremap <silent> <leader>gc :Gcommit<CR>
-            nnoremap <silent> <leader>gb :Gblame<CR>
-            nnoremap <silent> <leader>gl :Glog<CR>
-            nnoremap <silent> <leader>gp :Git push<CR>
-            nnoremap <silent> <leader>gr :Gread<CR>
-            nnoremap <silent> <leader>gw :Gwrite<CR>
-            nnoremap <silent> <leader>ge :Gedit<CR>
-            " Mnemonic _i_nteractive
-            nnoremap <silent> <leader>gi :Git add -p %<CR>
-            nnoremap <silent> <leader>gg :SignifyToggle<CR>
+    " indent_guides {
+        if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+            " The default mapping to toggle the plugin is <Leader>ig
+            let g:indent_guides_enable_on_vim_startup = 0
+            let g:indent_guides_start_level = 2
+            let g:indent_guides_guide_size = 1
+
+            " Setting custom indent colors
+            " Here's an example of how to define custom colors instead of
+            " using the ones the plugin automatically generates for you.
+            let g:indent_guides_auto_colors = 0
+            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+
+            " Terminal Vim
+            " When set background=dark is used, the following highlight colors will be defined:
+            "hi IndentGuidesOdd  ctermbg=black
+            "hi IndentGuidesEven ctermbg=darkgrey
+            " Alternatively, when set background=light is used, the following highlight colors will be defined:
+            "hi IndentGuidesOdd  ctermbg=white
+            "hi IndentGuidesEven ctermbg=lightgrey
         endif
-    "}
+    " }
+
+    " vim-airline {
+        " Set configuration options for the statusline plugin vim-airline.
+        " Use the powerline theme and optionally enable powerline symbols.
+        " To use the symbols , , , , , , and .in the statusline
+        " segments add the following to your .vimrc file:
+        "let g:airline_powerline_fonts=1
+        " If the previous symbols do not render for you then install a
+        " powerline enabled font.
+
+        " See `:echo g:airline_theme_map` for some more choices
+        " Default in terminal vim is 'dark'
+        if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
+            if !exists('g:airline_theme')
+                let g:airline_theme = 'solarized'
+            endif
+            if !exists('g:airline_powerline_fonts')
+                " Use the default set of separators with a few customizations
+                let g:airline_left_sep='›'  " Slightly fancier than '>'
+                let g:airline_right_sep='‹' " Slightly fancier than '<'
+            endif
+        endif
+    " }
+
+    " OmniComplete {
+        " To disable omni complete, add the following:
+        " let g:dup_no_omni_complete = 1
+        if !exists('g:dup_no_omni_complete')
+            if has("autocmd") && exists("+omnifunc")
+                autocmd Filetype *
+                    \if &omnifunc == "" |
+                    \setlocal omnifunc=syntaxcomplete#Complete |
+                    \endif
+            endif
+
+            hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+            hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+            hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+
+            " Some convenient mappings
+            "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+            if exists('g:dup_map_cr_omni_complete')
+                inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
+            endif
+            inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+            inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+            inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+            inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+
+            " Automatically open and close the popup menu / preview window
+            au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+            set completeopt=menu,preview,longest
+        endif
+    " }
 
     " YouCompleteMe {
         if count(g:dup_vundle_groups, 'youcompleteme')
@@ -1099,53 +1098,6 @@
         endif
     " }
 
-    " indent_guides {
-        if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
-            " The default mapping to toggle the plugin is <Leader>ig
-            let g:indent_guides_enable_on_vim_startup = 0
-            let g:indent_guides_start_level = 2
-            let g:indent_guides_guide_size = 1
-
-            " Setting custom indent colors
-            " Here's an example of how to define custom colors instead of
-            " using the ones the plugin automatically generates for you.
-            let g:indent_guides_auto_colors = 0
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-
-            " Terminal Vim
-            " When set background=dark is used, the following highlight colors will be defined:
-            "hi IndentGuidesOdd  ctermbg=black
-            "hi IndentGuidesEven ctermbg=darkgrey
-            " Alternatively, when set background=light is used, the following highlight colors will be defined:
-            "hi IndentGuidesOdd  ctermbg=white
-            "hi IndentGuidesEven ctermbg=lightgrey
-        endif
-    " }
-
-    " vim-airline {
-        " Set configuration options for the statusline plugin vim-airline.
-        " Use the powerline theme and optionally enable powerline symbols.
-        " To use the symbols , , , , , , and .in the statusline
-        " segments add the following to your .vimrc file:
-        "let g:airline_powerline_fonts=1
-        " If the previous symbols do not render for you then install a
-        " powerline enabled font.
-
-        " See `:echo g:airline_theme_map` for some more choices
-        " Default in terminal vim is 'dark'
-        if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-            if !exists('g:airline_theme')
-                let g:airline_theme = 'solarized'
-            endif
-            if !exists('g:airline_powerline_fonts')
-                " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
-            endif
-        endif
-    " }
-
     " PyMode {
         " Disable if python support not present
         if !has('python') && !has('python3')
@@ -1157,6 +1109,35 @@
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_rope = 0
+        endif
+    " }
+
+    " PIV {
+        if isdirectory(expand("~/.vim/bundle/PIV"))
+            let g:DisableAutoPHPFolding = 0
+            let g:PIVAutoClose = 0
+        endif
+    " }
+
+    " GoLang {
+        if count(g:dup_vundle_groups, 'go')
+            let g:go_highlight_functions = 1
+            let g:go_highlight_methods = 1
+            let g:go_highlight_structs = 1
+            let g:go_highlight_operators = 1
+            let g:go_highlight_build_constraints = 1
+            let g:go_fmt_command = "goimports"
+            let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+            let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+            au FileType go nmap <Leader>s <Plug>(go-implements)
+            au FileType go nmap <Leader>i <Plug>(go-info)
+            au FileType go nmap <Leader>e <Plug>(go-rename)
+            au FileType go nmap <leader>r <Plug>(go-run)
+            au FileType go nmap <leader>b <Plug>(go-build)
+            au FileType go nmap <leader>t <Plug>(go-test)
+            au FileType go nmap <Leader>gd <Plug>(go-doc)
+            au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+            au FileType go nmap <leader>co <Plug>(go-coverage)
         endif
     " }
 
@@ -1185,6 +1166,29 @@
 
             " Enable trimming of trailing whitespace when uncommenting
             let g:NERDTrimTrailingWhitespace = 1
+        endif
+    " }
+
+    " Fugitive {
+        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+            nnoremap <silent> <leader>gs :Gstatus<CR>
+            nnoremap <silent> <leader>gd :Gdiff<CR>
+            nnoremap <silent> <leader>gc :Gcommit<CR>
+            nnoremap <silent> <leader>gb :Gblame<CR>
+            nnoremap <silent> <leader>gl :Glog<CR>
+            nnoremap <silent> <leader>gp :Git push<CR>
+            nnoremap <silent> <leader>gr :Gread<CR>
+            nnoremap <silent> <leader>gw :Gwrite<CR>
+            nnoremap <silent> <leader>ge :Gedit<CR>
+            " Mnemonic _i_nteractive
+            nnoremap <silent> <leader>gi :Git add -p %<CR>
+            nnoremap <silent> <leader>gg :SignifyToggle<CR>
+        endif
+    " }
+
+    " Misc {
+        if isdirectory(expand("~/.vim/bundle/matchit.zip"))
+            let b:match_ignorecase = 1
         endif
     " }
 
