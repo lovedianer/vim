@@ -200,7 +200,7 @@
 
         " Java {
             if count(g:dup_vundle_groups, 'java')
-                Plugin 'artur-shaik/vim-javacomplete2'  "needs vim verson>=7.4.143 & JDK8+
+                Plugin 'artur-shaik/vim-javacomplete2'  "needs vim version>=7.4.143 & JDK8+
             endif
         " }
 
