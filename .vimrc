@@ -200,7 +200,7 @@
 
         " Java {
             if count(g:dup_vundle_groups, 'java')
-                Plugin 'vim-javacompleteex'
+                Plugin 'artur-shaik/vim-javacomplete2'  "needs vim verson>=7.4.143 & JDK8+
             endif
         " }
 
@@ -677,8 +677,10 @@
             " 在.bashrc中增加如下定义，这样：在终端的任何目录下，输入"haha"就可以生成ctags&cscope
             "alias haha='ctags_cscope_func'
             "ctags_cscope_func() {
-                "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-                "cscope -Rbq
+                "ctags -R --c++-kinds=+px --fields=+aiKSz --extra=+q .
+                "find . -name "*.h" -o -name "*.hh" -o -name "*.hpp" -o -name "*.hxx" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp" -o -name "*.cxx" -o -name "*.java" > cscope.files
+                "cscope -Rbq -i cscope.files
+                "rm -rf cscope.files
             "}
         endif
     " }
@@ -1079,13 +1081,21 @@
 
     " OmniCppComplete {
         if count(g:dup_vundle_groups, 'OmniCppComplete')
-             " 用于C/C++代码补全，这种补全主要针对命名空间、类、结构、共同体等进行补全，详细
-             " 说明可以参考帮助或网络教程等
+             " 用于C/C++代码补全，这种补全主要针对命名空间、类、结构、共同体等进行补全
              " 使用前先执行如下 ctags 命令
-             " ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
-             " 我使用上面的参数生成标签后，对函数使用跳转时会出现多个选择
-             " 所以我就将--c++-kinds=+p参数给去掉了，如果大侠有什么其它解决方法希望不要保留呀
-             set completeopt=longest,menu                        "关闭预览窗口
+             set completeopt=longest,menu           "关闭预览窗口
+             let OmniCpp_NamespaceSearch = 2        "search namespaces in the current buffer and in included files
+             let OmniCpp_ShowPrototypeInAbbr = 1    "display function parameter list
+             let OmniCpp_MayCompleteScope = 1       "type in :: auto complete
+             let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+        endif
+    " }
+
+    " Java {
+        if count(g:dup_vundle_groups, 'java')
+            if isdirectory(expand("~/.vim/bundle/vim-javacomplete2/"))
+                autocmd FileType java setlocal omnifunc=javacomplete#Complete
+            endif
         endif
     " }
 
